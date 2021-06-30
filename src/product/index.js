@@ -2,30 +2,46 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./index.css";
+import {API_URL} from "../config/constants";
+import dayjs from 'dayjs';
+import { Button, message } from "antd";
 function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  useEffect(function () {
+
+  const getProduct = () =>{//getProduct함수 
     axios
       .get(
-        `https://f218ef37-3b25-4d45-9862-2a9f009ed5a4.mock.pstmn.io/products/${id}`
+        `${API_URL}/products/${id}`
       )
       .then(function (result) {
-        setProduct(result.data);
+        setProduct(result.data.product);
       })
       .catch(function (error) {
         console.error(error);
       });
+  }
+
+  useEffect(function () {
+    getProduct();//useEffect시 getProduct 랜딩될때 부르고 
   }, []);
 
   if (product === null) {
     return <h1>상품 정보를 받고 있습니다...</h1>;
   }
-
+  
+  const onClickPurchase = () =>{//구매하기 클릭이벤트
+    axios.post(`${API_URL}/purchase/${id}`).then((result)=>{
+      message.info("구매가 완료되었습니다.");
+      getProduct();//구매할때 getProduct랜딩 disabled효과 
+    }).catch((error)=>{
+      message.error(`에러가 발생했습니다. ${error.message}`)
+    })
+  }
   return (
     <div>
       <div id="image-box">
-        <img src={"/" + product.imageUrl} alt="" />
+        <img src={`${API_URL}/${product.imageUrl}`} alt="" />
       </div>
       <div id="profile-box">
         <img src="/images/icons/avatar.png" />
@@ -34,8 +50,9 @@ function ProductPage() {
       <div id="contents-box">
         <div id="name">{product.name}</div>
         <div id="price">{product.price}원</div>
-        <div id="createdAt">2020년 12월 8일</div>
-        <div id="description">{product.description} </div>
+        <div id="createdAt">{dayjs(product.createdAt).format('YYYY년 MM월 DD일')}</div>
+        <Button id="purchase-button" size="large" type="primary" danger onClick={onClickPurchase} disabled={product.soldout === 1}>재빨리 구매하기</Button>
+        <pre id="description">{product.description} </pre>
       </div>
     </div>
   );
