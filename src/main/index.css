@@ -1,10 +1,10 @@
 #banner {
-    max-height: 300px;
+    /* max-height: 300px; */
   }
   
   #banner > img {
     width: 100%;
-    max-height: 300px;
+    /* max-height: 300px; */
   }
   
   #body > h1 {
@@ -83,6 +83,20 @@
     font-size: 12px;
     color: rgb(136,136,136);
   }
-  .product-headline{
-    margin-top:8px;
+  #product-headline{
+    margin: 25px 0px;
+    text-align: center;
+  }
+  #top_banner{
+    width:100%;
+    /* background: blue; */
+  }
+  #top_banner > img{
+    width:100%;
+  }
+  .ant-carousel .slick-dots li.slick-active button{
+    background: deepskyblue!important;
+  }
+  .ant-carousel .slick-dots li button{
+    height: 6px!important;
   }

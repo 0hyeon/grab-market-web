@@ -9,6 +9,7 @@ import {API_URL} from "../config/constants.js";
 import { Carousel } from 'antd';
 dayjs.extend(relativeTime);//dayjs에서 확장된 기능 사용 
 
+
 function MainPage() {
   const [products, setProducts] = React.useState([]);// state형태
   const [banners, setBanners] = React.useState([]);
@@ -34,8 +35,11 @@ function MainPage() {
 
   return (
     <div>
+      {/* <div id="top_banner" >
+        <img src="images/ji/1.jpg"/>
+      </div> */}
     {/*배너*/}
-    <Carousel autoplay autoplaySpeed={3000}>
+    <Carousel autoplay autoplaySpeed={2000}>
       {
         banners.map((banner,index) => {
           return(
@@ -48,7 +52,7 @@ function MainPage() {
         })
       }
     </Carousel>
-      <h1 id="product-headline">판매되는 상품들</h1>
+      <h1 id="product-headline">NEW ARRIVALS</h1>
       <div id="product-list">
         {/* 상품리스트 */}
         {products.map(function (product, index) {
