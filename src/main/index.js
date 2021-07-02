@@ -7,16 +7,16 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime"
 import {API_URL} from "../config/constants.js";
 import { Carousel } from 'antd';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay} from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/scrollbar/scrollbar.scss';
+// import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay} from 'swiper';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/swiper.scss';
+// import 'swiper/components/navigation/navigation.scss';
+// import 'swiper/components/pagination/pagination.scss';
+// import 'swiper/components/scrollbar/scrollbar.scss';
 dayjs.extend(relativeTime);//dayjs에서 확장된 기능 사용 
 
 // 모바일슬라이드
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
+// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 function MainPage() {
   const [products, setProducts] = React.useState([]);// state형태
@@ -47,8 +47,7 @@ function MainPage() {
         <img src="images/ji/1.jpg"/>
       </div> */}
     {/* 모바일배너 */}
-    
-    <Swiper
+    {/* <Swiper
       spaceBetween={0}
       slidesPerView={1}
       navigation
@@ -72,7 +71,7 @@ function MainPage() {
           )
         })
       }
-    </Swiper>
+    </Swiper> */}
   
     {/*웹슬라이드배너*/}
     {/* <Carousel autoplay autoplaySpeed={2000}>

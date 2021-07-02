@@ -7,6 +7,8 @@ import ProductPage from "./product";
 import Navbar from "./Main component";
 import { Button } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
+import  SliderMobile from "./antdMobile";
+import 'antd-mobile/dist/antd-mobile.css';
 function App() {
   const history = useHistory();
   return (
@@ -28,6 +30,7 @@ function App() {
           </Button> */}
         </div>
       </div>
+      <SliderMobile />
       <div id="body">
         <Switch>
           <Route exact={true} path="/">
